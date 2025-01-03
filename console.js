@@ -129,5 +129,7 @@
   try {
     await addBotButton();
   } catch {}
-  await startGame();
+  try {
+    await startGame();
+  } catch {}
 })();
