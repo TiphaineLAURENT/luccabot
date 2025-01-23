@@ -15,7 +15,7 @@
   };
 
   const addBotButton = async () => {
-    await sleep(100);  // Wait for buttons to appear
+    await sleep(200);  // Wait for buttons to appear
     const trainButton = document.querySelector('[transloco="TRAINING_TITLE_BUTTON"]');
     const botButton = trainButton.cloneNode(true);
     botButton.innerText = "Bot";
