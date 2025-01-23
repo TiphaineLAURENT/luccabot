@@ -40,7 +40,7 @@
 
   const startGame = async () => {
     performance.clearResourceTimings();
-    addEventListener("resourcetimingbufferfull", (event) => {
+    performance.addEventListener("resourcetimingbufferfull", (event) => {
       performance.clearResourceTimings();
     });
 
