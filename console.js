@@ -39,6 +39,11 @@
   }
 
   const startGame = async () => {
+    performance.clearResourceTimings();
+    addEventListener("resourcetimingbufferfull", (event) => {
+      performance.clearResourceTimings();
+    });
+
     await sleep(500);
 
     const game = document.querySelector(".gameContainer");
