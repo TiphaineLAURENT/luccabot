@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://polyconseil.ilucca.net/faces/home
 // @grant       none
-// @version     1.0
+// @version     1.1
 // @author      Tiphaine LAURENT
 // @description 1/2/2025, 11:46:29 PM
 // @run-at      document-end
@@ -124,7 +124,12 @@
     }
 
     if (!answer) {
-      answersButtons[0].click();
+      for (const [index, button] of answersButtons.entries()) {
+        if (Object.values(answers).includes(button.textContent) && index != 3) {
+          continue;
+        }
+        button.click();
+      }
 
       await sleep(500);
       const rightAnswerButton = document.querySelector("button.is-right");

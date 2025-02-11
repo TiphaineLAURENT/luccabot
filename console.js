@@ -113,7 +113,12 @@
     }
 
     if (!answer) {
-      answersButtons[0].click();
+      for (const [index, button] of answersButtons.entries()) {
+        if (Object.values(answers).includes(button.textContent) && index != 3) {
+          continue;
+        }
+        button.click();
+      }
 
       await sleep(500);
       const rightAnswerButton = document.querySelector("button.is-right");
