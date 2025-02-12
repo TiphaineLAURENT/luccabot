@@ -32,12 +32,14 @@
 
   const handleFinish = async () => {
     await sleep(UI_UPDATE_DELAY);
-    const replayButton = document.querySelector('[transloco="RANKINGS"] + button');
+    const replayButton = document.querySelector('app-game-state-over button:not([transloco="RANKINGS"])');
     if (!replayButton) {
       return;
     }
 
-    replayButton.addEventListener('click', startGame);
+    replayButton.addEventListener('click', () => {
+      sleep(UI_UPDATE_DELAY).then(startGame);
+    });
   }
 
   const startGame = async () => {
@@ -84,7 +86,6 @@
       await handleCheatLimit();
       const imageSize = await getImageSize(image);
       await clickAnswer(imageSize);
-      await handleFinish();
     }
 
     const imageObserver = new MutationObserver((mutations) => {
