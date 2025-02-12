@@ -40,6 +40,7 @@
     replayButton.addEventListener('click', () => {
       sleep(UI_UPDATE_DELAY).then(startGame);
     });
+    replayButton.textContent = "Rejouer (bot)";
   }
 
   const startGame = async () => {
