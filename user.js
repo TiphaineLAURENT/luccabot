@@ -14,6 +14,8 @@
   const TIME_PER_SCORE = 30;  // ms
   const target = 1549;
 
+  const UI_UPDATE_DELAY = 500;
+
   const STORAGE_KEY = "lucca_bot";
   const answers = JSON.parse(localStorage.getItem(STORAGE_KEY)) ?? {};
 
@@ -26,7 +28,7 @@
   };
 
   const addBotButton = async () => {
-    await sleep(200);  // Wait for buttons to appear
+    await sleep(UI_UPDATE_DELAY);
     const trainButton = document.querySelector('[transloco="TRAINING_TITLE_BUTTON"]');
     const botButton = trainButton.cloneNode(true);
     botButton.innerText = "Bot";
@@ -40,7 +42,7 @@
   }
 
   const handleFinish = async () => {
-    await sleep(500);
+    await sleep(UI_UPDATE_DELAY);
     const replayButton = document.querySelector('[transloco="RANKINGS"] + button');
     if (!replayButton) {
       return;
@@ -55,7 +57,7 @@
       performance.clearResourceTimings();
     });
 
-    await sleep(500);
+    await sleep(UI_UPDATE_DELAY);
 
     const game = document.querySelector(".gameContainer");
     const gameObserver = new MutationObserver(async (mutations) => {
@@ -131,7 +133,7 @@
         button.click();
       }
 
-      await sleep(500);
+      await sleep(UI_UPDATE_DELAY);
       const rightAnswerButton = document.querySelector("button.is-right");
       const rightAnswer = rightAnswerButton.textContent;
       console.log("You discovered a new person!", rightAnswer);
